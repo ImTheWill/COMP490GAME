@@ -90,7 +90,6 @@ offset_bottom = 40.0
 script = ExtResource("5_mkpgn")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Graphics/resolution"]
-layout_mode = 0
 offset_top = 122.5
 offset_right = 809.0
 offset_bottom = 170.5
@@ -141,7 +140,6 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_b4jkm")
 
 [node name="rebind_controls" type="Control" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-mouse_filter = 2
 script = ExtResource("6_h7llu")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls"]
@@ -175,7 +173,6 @@ text = "keybind"
 
 [node name="rebind_controls2" type="Control" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-mouse_filter = 2
 script = ExtResource("6_h7llu")
 action_name = "move_right"
 
@@ -210,7 +207,6 @@ text = "keybind"
 
 [node name="rebind_controls3" type="Control" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-mouse_filter = 2
 script = ExtResource("6_h7llu")
 action_name = "jump"
 
@@ -245,7 +241,6 @@ text = "keybind"
 
 [node name="rebind_controls4" type="Control" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-mouse_filter = 2
 script = ExtResource("6_h7llu")
 action_name = "left_click"
 
