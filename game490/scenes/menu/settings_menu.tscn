@@ -23,8 +23,10 @@ script = ExtResource("1_1ri5y")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 644.0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 1153.0
+offset_bottom = 649.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_juudm")
 
 [node name="TabContainer" type="TabContainer" parent="."]
