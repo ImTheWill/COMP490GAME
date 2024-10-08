@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://btthuubqumr3t"]
+[gd_scene load_steps=26 format=4 uid="uid://btthuubqumr3t"]
 
 [ext_resource type="Texture2D" uid="uid://cfhew5wvjj2ox" path="res://assets/warped city files/demo/assets/environment/bg-1.png" id="1_b7qex"]
 [ext_resource type="Script" path="res://scripts/level_scripts/AutoScroll(SKY).gd" id="1_jkeb3"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bnqp63bmuekfu" path="res://assets/warped city files/ENVIRONMENT/props/banner-scroll/banner-scroll-4.png" id="14_ant8f"]
 [ext_resource type="Texture2D" uid="uid://bl2xqfnr6qgw8" path="res://assets/warped city files/ENVIRONMENT/props/banner-coke/banner-coke-2.png" id="15_h85rc"]
 [ext_resource type="Texture2D" uid="uid://b74vll3g8lsnt" path="res://assets/warped city files/ENVIRONMENT/props/banner-big/banner-big-1.png" id="16_legnu"]
+[ext_resource type="PackedScene" uid="uid://c04s51j668ips" path="res://enemy.tscn" id="17_g2a8y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7wdf"]
 texture = ExtResource("6_1vh0m")
@@ -238,3 +239,6 @@ texture = ExtResource("15_h85rc")
 [node name="Banner-big-1" type="Sprite2D" parent="."]
 position = Vector2(912, 209)
 texture = ExtResource("16_legnu")
+
+[node name="Enemy" parent="." instance=ExtResource("17_g2a8y")]
+position = Vector2(275, 202)
