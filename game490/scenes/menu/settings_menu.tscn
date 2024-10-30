@@ -1,22 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6wio0jdy4h7t"]
+[gd_scene load_steps=10 format=3 uid="uid://b6wio0jdy4h7t"]
 
 [ext_resource type="Texture2D" uid="uid://m4p5ijggeqg0" path="res://assets/Rusted Music Studio - Assets/Rusted (24).png" id="1_0e5l6"]
 [ext_resource type="Script" path="res://scripts/menu_scripts/settings_menu.gd" id="1_1ri5y"]
 [ext_resource type="FontFile" uid="uid://bm22e4yafek3d" path="res://assets/fonts/Minecraft.ttf" id="3_xo42u"]
-[ext_resource type="Script" path="res://scenes/menu/window_mode_butt.gd" id="4_btk12"]
-[ext_resource type="Script" path="res://scenes/menu/resolution.gd" id="5_mkpgn"]
-[ext_resource type="Script" path="res://scenes/menu/rebind_controls.gd" id="6_h7llu"]
+[ext_resource type="Script" path="res://scripts/menu_scripts/window_mode_butt.gd" id="4_btk12"]
+[ext_resource type="Script" path="res://scripts/menu_scripts/resolution.gd" id="5_mkpgn"]
+[ext_resource type="Script" path="res://scripts/menu_scripts/InputSettings.gd" id="6_ij5qd"]
+[ext_resource type="PackedScene" uid="uid://7dgs8a6inte7" path="res://scenes/menu/input_button.tscn" id="7_y62me"]
+[ext_resource type="Script" path="res://scenes/menu/volume_slider.gd" id="8_y2xfi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_juudm"]
 texture = ExtResource("1_0e5l6")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b4jkm"]
-
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.986
+anchor_bottom = 0.968
+offset_right = 0.12793
+offset_bottom = -0.264038
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ri5y")
@@ -24,9 +25,9 @@ script = ExtResource("1_1ri5y")
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 5.0
-offset_right = 1153.0
-offset_bottom = 649.0
+offset_top = -5.0
+offset_right = 1284.0
+offset_bottom = 728.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_juudm")
 
 [node name="TabContainer" type="TabContainer" parent="."]
@@ -45,78 +46,91 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_xo42u")
 current_tab = 2
 
-[node name="Camera" type="TabBar" parent="TabContainer"]
+[node name="Graphics" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_xo42u")
 metadata/_tab_index = 0
 
-[node name="Graphics" type="TabBar" parent="TabContainer"]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_xo42u")
-metadata/_tab_index = 1
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 39.0
+offset_right = 749.0
+offset_bottom = 456.0
 
-[node name="window_mode_butt" type="Control" parent="TabContainer/Graphics"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Graphics/MarginContainer"]
+clip_contents = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/Graphics/MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="window_mode_butt" type="Control" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer"]
+layout_mode = 2
 script = ExtResource("4_btk12")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Graphics/window_mode_butt"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer/window_mode_butt"]
 layout_mode = 0
-offset_top = 21.5
-offset_right = 809.0
-offset_bottom = 69.5
+offset_left = -36.0
+offset_top = 22.0
+offset_right = 727.0
+offset_bottom = 70.0
 theme_override_constants/separation = 80
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Graphics/window_mode_butt/HBoxContainer"]
+[node name="Label" type="Label" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer/window_mode_butt/HBoxContainer"]
 custom_minimum_size = Vector2(264, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_xo42u")
 theme_override_font_sizes/font_size = 32
 text = "Window Mode"
 
-[node name="VSeparator" type="VSeparator" parent="TabContainer/Graphics/window_mode_butt/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer/window_mode_butt/HBoxContainer"]
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="TabContainer/Graphics/window_mode_butt/HBoxContainer"]
+[node name="window_mode" type="OptionButton" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer/window_mode_butt/HBoxContainer"]
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xo42u")
 
-[node name="resolution" type="Control" parent="TabContainer/Graphics"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="resolution" type="Control" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer"]
+layout_mode = 2
 script = ExtResource("5_mkpgn")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Graphics/resolution"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer/resolution"]
 layout_mode = 0
-offset_top = 122.5
-offset_right = 809.0
-offset_bottom = 170.5
+offset_left = -36.0
+offset_top = 60.0
+offset_right = 727.0
+offset_bottom = 108.0
 theme_override_constants/separation = 80
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Graphics/resolution/HBoxContainer2"]
+[node name="Label" type="Label" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer/resolution/HBoxContainer2"]
 custom_minimum_size = Vector2(264, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_xo42u")
 theme_override_font_sizes/font_size = 32
 text = "Resolution"
 
-[node name="VSeparator" type="VSeparator" parent="TabContainer/Graphics/resolution/HBoxContainer2"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer/resolution/HBoxContainer2"]
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="TabContainer/Graphics/resolution/HBoxContainer2"]
+[node name="resolution_mode" type="OptionButton" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer/resolution/HBoxContainer2"]
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xo42u")
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_xo42u")
-metadata/_tab_index = 2
+script = ExtResource("6_ij5qd")
+metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]
 layout_mode = 0
@@ -130,169 +144,149 @@ clip_contents = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer"]
+[node name="ActionList" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 40
+theme_override_constants/separation = 10
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="InputButton" parent="TabContainer/Controls/MarginContainer/ScrollContainer/ActionList" instance=ExtResource("7_y62me")]
 layout_mode = 2
-theme_override_constants/separation = 20
-theme_override_styles/separator = SubResource("StyleBoxEmpty_b4jkm")
 
-[node name="rebind_controls" type="Control" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="InputButton2" parent="TabContainer/Controls/MarginContainer/ScrollContainer/ActionList" instance=ExtResource("7_y62me")]
 layout_mode = 2
-mouse_filter = 2
-script = ExtResource("6_h7llu")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -15.0
-offset_right = 650.0
-offset_bottom = 26.0
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls/HBoxContainer"]
+[node name="InputButton3" parent="TabContainer/Controls/MarginContainer/ScrollContainer/ActionList" instance=ExtResource("7_y62me")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 18
-text = "Action/control"
-vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls/HBoxContainer"]
+[node name="InputButton4" parent="TabContainer/Controls/MarginContainer/ScrollContainer/ActionList" instance=ExtResource("7_y62me")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 100
 
-[node name="Button" type="Button" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls/HBoxContainer"]
+[node name="Reset" type="Button" parent="TabContainer/Controls/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "keybind"
-
-[node name="rebind_controls2" type="Control" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-script = ExtResource("6_h7llu")
-action_name = "move_right"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls2"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -15.0
-offset_right = 650.0
-offset_bottom = 26.0
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 18
-text = "Action/control"
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 100
-
-[node name="Button" type="Button" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "keybind"
-
-[node name="rebind_controls3" type="Control" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-script = ExtResource("6_h7llu")
-action_name = "jump"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls3"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -15.0
-offset_right = 650.0
-offset_bottom = 26.0
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls3/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 18
-text = "Action/control"
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls3/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 100
-
-[node name="Button" type="Button" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls3/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "keybind"
-
-[node name="rebind_controls4" type="Control" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-script = ExtResource("6_h7llu")
-action_name = "left_click"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls4"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -15.0
-offset_right = 650.0
-offset_bottom = 26.0
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls4/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 18
-text = "Action/control"
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls4/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 100
-
-[node name="Button" type="Button" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer/rebind_controls4/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "keybind"
-
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-theme_override_styles/separator = SubResource("StyleBoxEmpty_b4jkm")
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_xo42u")
+text = "Restore To Default"
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_xo42u")
-metadata/_tab_index = 3
+metadata/_tab_index = 2
+
+[node name="Master" type="MarginContainer" parent="TabContainer/Sound"]
+layout_mode = 0
+offset_left = 109.896
+offset_top = 50.152
+offset_right = 709.896
+offset_bottom = 90.152
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/Sound/Master"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="TabContainer/Sound/Master/BoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xo42u")
+theme_override_font_sizes/font_size = 25
+text = "Master
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="TabContainer/Sound/Master/BoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+split_offset = 10
+
+[node name="master_slider" type="HSlider" parent="TabContainer/Sound/Master/BoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+script = ExtResource("8_y2xfi")
+bus_name = "Master"
+
+[node name="SFX" type="MarginContainer" parent="TabContainer/Sound"]
+layout_mode = 0
+offset_left = 108.896
+offset_top = 96.152
+offset_right = 708.896
+offset_bottom = 136.152
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/Sound/SFX"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="TabContainer/Sound/SFX/BoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xo42u")
+theme_override_font_sizes/font_size = 25
+text = "SFX"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="TabContainer/Sound/SFX/BoxContainer"]
+custom_minimum_size = Vector2(73, 0)
+layout_mode = 2
+split_offset = 10
+
+[node name="sfx_slider" type="HSlider" parent="TabContainer/Sound/SFX/BoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+script = ExtResource("8_y2xfi")
+bus_name = "SFX"
+
+[node name="Music" type="MarginContainer" parent="TabContainer/Sound"]
+layout_mode = 0
+offset_left = 108.896
+offset_top = 138.152
+offset_right = 708.896
+offset_bottom = 193.152
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/Sound/Music"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="TabContainer/Sound/Music/BoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xo42u")
+theme_override_font_sizes/font_size = 25
+text = "Music
+
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="TabContainer/Sound/Music/BoxContainer"]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+split_offset = 10
+
+[node name="music_slider" type="HSlider" parent="TabContainer/Sound/Music/BoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+script = ExtResource("8_y2xfi")
+bus_name = "Music"
 
 [node name="Accessibility" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_xo42u")
-metadata/_tab_index = 4
+metadata/_tab_index = 3
+
+[connection signal="toggled" from="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer/window_mode_butt/HBoxContainer/window_mode" to="." method="_on_window_mode_toggled"]
+[connection signal="toggled" from="TabContainer/Graphics/MarginContainer/ScrollContainer/VSplitContainer/resolution/HBoxContainer2/resolution_mode" to="." method="_on_resolution_mode_toggled"]
+[connection signal="pressed" from="TabContainer/Controls/MarginContainer/Reset" to="TabContainer/Controls" method="_on_reset_pressed"]
+[connection signal="drag_ended" from="TabContainer/Sound/Master/BoxContainer/master_slider" to="." method="_on_master_slider_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Sound/SFX/BoxContainer/sfx_slider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="drag_ended" from="TabContainer/Sound/Music/BoxContainer/music_slider" to="." method="_on_music_slider_drag_ended"]

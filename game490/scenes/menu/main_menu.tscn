@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://boxnbrl2envop"]
 
-[ext_resource type="Script" path="res://scripts/menu_scripts/main_menu.gd" id="1_hawdi"]
-[ext_resource type="Texture2D" uid="uid://xhpi361ashdk" path="res://assets/Rusted Music Studio - Assets/Rusted (9).png" id="2_jk7wg"]
-[ext_resource type="FontFile" uid="uid://bm22e4yafek3d" path="res://assets/fonts/Minecraft.ttf" id="3_g2bow"]
-[ext_resource type="Texture2D" uid="uid://c3k6w0dxsxmch" path="res://assets/fonts/audio.png" id="4_4ypur"]
+[ext_resource type="Script" path="res://scripts/menu_scripts/main_menu.gd" id="1_atxup"]
+[ext_resource type="Texture2D" uid="uid://xhpi361ashdk" path="res://assets/Rusted Music Studio - Assets/Rusted (9).png" id="2_iki6w"]
+[ext_resource type="FontFile" uid="uid://bm22e4yafek3d" path="res://assets/fonts/Minecraft.ttf" id="3_67ugh"]
+[ext_resource type="Texture2D" uid="uid://c3k6w0dxsxmch" path="res://assets/fonts/audio.png" id="4_t43sj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gkdbs"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1bjww"]
-texture = ExtResource("2_jk7wg")
+texture = ExtResource("2_iki6w")
 modulate_color = Color(0.641934, 0.641934, 0.641934, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u52pg"]
@@ -48,7 +48,7 @@ offset_right = 3.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hawdi")
+script = ExtResource("1_atxup")
 
 [node name="Panel" type="Panel" parent="."]
 material = SubResource("CanvasItemMaterial_gkdbs")
@@ -78,7 +78,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0.654232, 0.654232, 0.654232, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_g2bow")
+theme_override_fonts/font = ExtResource("3_67ugh")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_u52pg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ocbll")
@@ -88,7 +88,7 @@ text = "Start Game"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_g2bow")
+theme_override_fonts/font = ExtResource("3_67ugh")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_u52pg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ocbll")
@@ -98,7 +98,7 @@ text = "Settings"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_g2bow")
+theme_override_fonts/font = ExtResource("3_67ugh")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_u52pg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ocbll")
@@ -119,7 +119,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/font = ExtResource("3_g2bow")
+theme_override_fonts/font = ExtResource("3_67ugh")
 theme_override_font_sizes/font_size = 61
 text = "Bullet Storm"
 horizontal_alignment = 1
@@ -133,7 +133,7 @@ offset_bottom = 648.0
 theme_override_styles/hover = SubResource("StyleBoxEmpty_f0dfl")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_y08q8")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fgu08")
-icon = ExtResource("4_4ypur")
+icon = ExtResource("4_t43sj")
 icon_alignment = 1
 expand_icon = true
 
