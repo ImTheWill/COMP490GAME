@@ -389,13 +389,21 @@ position = Vector2(912, 209)
 texture = ExtResource("16_legnu")
 
 [node name="Enemy" parent="." instance=ExtResource("17_g2a8y")]
+<<<<<<< HEAD
 position = Vector2(619, 425)
+=======
+position = Vector2(275, 202)
+>>>>>>> 4a17246be9b4cc10ce86835382f40a786f2f2dcb
 
 [node name="Player" parent="." instance=ExtResource("18_h63c0")]
 position = Vector2(863, 376)
 
+<<<<<<< HEAD
 [node name="Killzone" parent="." instance=ExtResource("28_bxag1")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(49, 782)
 shape = SubResource("WorldBoundaryShape2D_uwlah")
+=======
+[node name="Camera2D" type="Camera2D" parent="Player"]
+>>>>>>> 4a17246be9b4cc10ce86835382f40a786f2f2dcb
