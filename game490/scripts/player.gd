@@ -5,11 +5,6 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var camera: Camera2D = $Camera2D  # Assuming you have a Camera2D node as a child of the player
-
-func _ready():
-	print(camera)  # This will help verify if `camera` is actually referencing the Camera2D node
-	#camera.current = true  # Only if the reference is correct 
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
