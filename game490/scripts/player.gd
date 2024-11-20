@@ -66,5 +66,5 @@ func _physics_process(delta: float) -> void:
 	#Reset the player's position when out of bounds
 func reset_player_position():
 		global_position = RESET_POSITION
-		velocity = Vector2(0,0) #Stop all movement
+		velocity = Vector2(100,100) #Stop all movement
 		print ("Player resedt to:", RESET_POSITION)
