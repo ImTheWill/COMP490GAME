@@ -394,6 +394,8 @@ position = Vector2(619, 425)
 [node name="Player" parent="." instance=ExtResource("18_h63c0")]
 position = Vector2(863, 376)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
 [node name="Killzone" parent="." instance=ExtResource("28_bxag1")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
