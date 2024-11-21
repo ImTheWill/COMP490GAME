@@ -395,14 +395,15 @@ position = Vector2(912, 209)
 texture = ExtResource("16_legnu")
 
 [node name="Enemy" parent="." instance=ExtResource("17_g2a8y")]
-visible = false
-position = Vector2(619, 425)
+position = Vector2(631, 502)
 
 [node name="Player" parent="." instance=ExtResource("18_h63c0")]
 position = Vector2(37, 222)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
 limit_top = 0
+limit_right = 2375
 limit_bottom = 720
 
 [node name="Killzone" parent="." instance=ExtResource("28_bxag1")]
