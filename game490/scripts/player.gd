@@ -1,10 +1,11 @@
 extends CharacterBody2D
-
+@onready var player = get_tree().root.get_child(0)
+@onready var bullet = load("res://scenes/bullet.tscn")
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const RESET_POSITION = Vector2(0,0) #Reset position for the player
-const OUT_OF_BOUNDS_Y = 500 #Y-coordinate below which the player resets
+const OUT_OF_BOUNDS_Y = 1000 #Y-coordinate below which the player resets
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D
@@ -43,15 +44,20 @@ func _physics_process(delta: float) -> void:
 		if direction == 0:
 			if is_shooting == true:
 				animated_sprite_2d.play("shoot")
+				if Input.is_action_just_pressed("attack"):
+					shoot()
 			else:
 				animated_sprite_2d.play("idle")
 		else:
 			if is_shooting == true:
 				animated_sprite_2d.play("run-shoot")
+				if Input.is_action_just_pressed("attack"):
+					shoot()
 			else:
 				animated_sprite_2d.play("run")
 	else:
 		animated_sprite_2d.play("jump")
+		
 	
 	
 	# Horizontal movement
@@ -61,10 +67,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
-	
 	#Reset the player's position when out of bounds
 func reset_player_position():
 		global_position = RESET_POSITION
 		velocity = Vector2(100,100) #Stop all movement
 		print ("Player resedt to:", RESET_POSITION)
+		
+		
+func shoot():
+	var newBullet = bullet.instantiate() 
+	newBullet.dir = rotation
+	newBullet.spawnPos = get_global_mouse_position()
+	newBullet.rot = $bulletStart.rotation
+	player.add_child(newBullet)
