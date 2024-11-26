@@ -57,8 +57,6 @@ func _physics_process(delta: float) -> void:
 				animated_sprite_2d.play("run")
 	else:
 		animated_sprite_2d.play("jump")
-		
-	
 	
 	# Horizontal movement
 	if direction:

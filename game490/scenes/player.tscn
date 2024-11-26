@@ -207,7 +207,7 @@ animation = &"shoot"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, -37.5)
+position = Vector2(1, -37)
 shape = SubResource("RectangleShape2D_3wv0o")
 
 [node name="bulletStart" type="Marker2D" parent="."]

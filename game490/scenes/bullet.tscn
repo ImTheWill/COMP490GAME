@@ -14,7 +14,12 @@ position = Vector2(-4.76837e-07, -7)
 scale = Vector2(0.318725, 0.0972222)
 texture = ExtResource("2_rsg14")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollosionDec" type="Area2D" parent="."]
+
+[node name="CollosionDec" type="CollisionShape2D" parent="CollosionDec"]
 position = Vector2(6, -7)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_d33oo")
+
+[connection signal="area_entered" from="CollosionDec" to="." method="_on_collosion_dec_area_entered"]
+[connection signal="body_entered" from="CollosionDec" to="." method="_on_collosion_dec_body_entered"]

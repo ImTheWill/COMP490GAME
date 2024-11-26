@@ -3,6 +3,7 @@ var dir: int
 var rot: float
 var spawnPos: Vector2
 @export var SPEED = 500
+var hasHit = false;
 
 
 func _ready():
@@ -12,3 +13,7 @@ func _ready():
 func _physics_process(delta):
 	velocity = Vector2(SPEED, 0 ).rotated(rot)
 	move_and_slide()
+
+
+func _on_collosion_dec_body_entered(body):
+	queue_free()
