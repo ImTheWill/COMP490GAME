@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/menu_scripts/resolution.gd" id="5_mkpgn"]
 [ext_resource type="Script" path="res://scripts/menu_scripts/InputSettings.gd" id="6_ij5qd"]
 [ext_resource type="PackedScene" uid="uid://7dgs8a6inte7" path="res://scenes/menu/input_button.tscn" id="7_y62me"]
-[ext_resource type="Script" path="res://scenes/menu/volume_slider.gd" id="8_y2xfi"]
+[ext_resource type="Script" path="res://volume_slider.gd" id="8_y2xfi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_juudm"]
 texture = ExtResource("1_0e5l6")

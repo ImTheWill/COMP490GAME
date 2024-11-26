@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://s8a5ru2iu6up"]
+[gd_scene load_steps=42 format=3 uid="uid://s8a5ru2iu6up"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_34p57"]
 [ext_resource type="Texture2D" uid="uid://d31curb8lhyce" path="res://assets/warped city files/SPRITES/player/idle/idle-1.png" id="2_jqgo7"]
@@ -39,7 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://bowql8t3quwt" path="res://assets/warped city files/SPRITES/player/run-shoot/run-shoot-6.png" id="23_kepqe"]
 [ext_resource type="Texture2D" uid="uid://2bi67m6myst8" path="res://assets/warped city files/SPRITES/player/run-shoot/run-shoot-7.png" id="24_h0von"]
 [ext_resource type="Texture2D" uid="uid://dv02f4myenriv" path="res://assets/warped city files/SPRITES/player/run-shoot/run-shoot-8.png" id="25_oovyn"]
-[ext_resource type="Script" path="res://scripts/bullet_start.gd" id="40_krrc6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u0f8y"]
 animations = [{
@@ -207,9 +206,8 @@ animation = &"shoot"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -37)
+position = Vector2(2.5, -37.5)
 shape = SubResource("RectangleShape2D_3wv0o")
 
 [node name="bulletStart" type="Marker2D" parent="."]
 position = Vector2(40, -64)
-script = ExtResource("40_krrc6")
