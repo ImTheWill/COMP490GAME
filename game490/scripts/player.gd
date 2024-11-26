@@ -4,7 +4,9 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const RESET_POSITION = Vector2(0,0) #Reset position for the player
-const OUT_OF_BOUNDS_Y = 500 #Y-coordinate below which the player resets
+const OUT_OF_BOUNDS_Y = 725 #Y-coordinate below which the player resets
+const SAFE_ZONE_Y = OUT_OF_BOUNDS_Y - 10  #Allowable buffer zone
+const RESET_VELOCITY = Vector2(0,0)
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D
@@ -14,13 +16,19 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	
+	print("Player Postiion: ", global_position)
+	print("Is on floor: ", is_on_floor() )
+	
 	#Check if the player falls out of bounds
-	if global_position.y > OUT_OF_BOUNDS_Y:
+	if global_position.y > SAFE_ZONE_Y and not is_on_floor():
+		print("Reset triggered! Player Y position: ", global_position.y)
 		reset_player_position()
 	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	else:
+		velocity.y = 0
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -31,40 +39,37 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	#Flipping the sprite
-	if direction > 0:
-		animated_sprite_2d.flip_h = false
-	elif direction < 0:
-		animated_sprite_2d.flip_h = true
+	animated_sprite_2d.flip_h = direction < 0
 	
-	var is_shooting := Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	
 	
 	#Animations
-	if is_on_floor():
-		if direction == 0:
-			if is_shooting == true:
-				animated_sprite_2d.play("shoot")
-			else:
-				animated_sprite_2d.play("idle")
-		else:
-			if is_shooting == true:
-				animated_sprite_2d.play("run-shoot")
-			else:
-				animated_sprite_2d.play("run")
-	else:
-		animated_sprite_2d.play("jump")
-	
+	handle_animation(direction)
 	
 	# Horizontal movement
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
+	print("Before move_and_slide: velocity = ", velocity)
 	move_and_slide()
 	
 	
 	#Reset the player's position when out of bounds
 func reset_player_position():
-		global_position = RESET_POSITION
-		velocity = Vector2(100,100) #Stop all movement
-		print ("Player resedt to:", RESET_POSITION)
+	print("Resetting player current position: ", global_position)
+	global_position = RESET_POSITION
+	velocity = RESET_VELOCITY #Stop all movement
+	print ("Player resedt to:", RESET_POSITION)
+
+func handle_animation(direction):
+	var is_shooting := Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	if is_on_floor():
+		if direction == 0:
+			animated_sprite_2d.play("shoot" if is_shooting else "idle")
+		else: 
+			animated_sprite_2d.play("run-shoot" if is_shooting else "run")
+	else:
+		animated_sprite_2d.play("jump")
+	
