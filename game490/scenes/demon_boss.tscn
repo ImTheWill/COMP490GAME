@@ -1,8 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://ylj4rl6ynmq5"]
+[gd_scene load_steps=18 format=3 uid="uid://ylj4rl6ynmq5"]
 
 [ext_resource type="Texture2D" uid="uid://bel2obhb4kyfw" path="res://assets/sprites/DemonBoss/spritesheets/sprite_sheet.png" id="1_g8dg7"]
-[ext_resource type="Script" path="res://scripts/finite_state_machine.gd" id="2_1feiv"]
-[ext_resource type="Script" path="res://scripts/state.gd" id="3_qwg63"]
+[ext_resource type="Script" path="res://scripts/boss_scripts/demon_boss.gd" id="1_w728i"]
+[ext_resource type="Script" path="res://scripts/boss_scripts/finite_state_machine.gd" id="2_1feiv"]
+[ext_resource type="Script" path="res://scripts/boss_scripts/idle.gd" id="3_maoad"]
+[ext_resource type="Script" path="res://scripts/boss_scripts/state.gd" id="3_qwg63"]
+[ext_resource type="Script" path="res://scripts/boss_scripts/follow.gd" id="4_m21g7"]
+[ext_resource type="Script" path="res://scripts/boss_scripts/melee.gd" id="6_hrkmf"]
 
 [sub_resource type="Animation" id="Animation_o5yel"]
 length = 0.001
@@ -157,6 +161,7 @@ radius = 100.0
 [node name="DemonBoss" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("1_w728i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -41)
@@ -233,16 +238,18 @@ shape = SubResource("CircleShape2D_myrcd")
 script = ExtResource("2_1feiv")
 
 [node name="Idle" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("3_qwg63")
+script = ExtResource("3_maoad")
 
 [node name="Follow" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("3_qwg63")
+script = ExtResource("4_m21g7")
 
 [node name="Melee" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("3_qwg63")
+script = ExtResource("6_hrkmf")
 
 [node name="TakeDamage" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("3_qwg63")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("3_qwg63")
+
+[connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
