@@ -1,5 +1,5 @@
 extends State
-
+@onready var demon_boss = $"../.."
 @onready var collision = $"../../PlayerDetection/CollisionShape2D"
 @onready var progress_bar = owner.find_child("ProgressBar")
 
@@ -16,4 +16,8 @@ func transition():
 		get_parent().change_state("Follow")
 
 func _on_player_detection_body_entered(body: Node2D) -> void:
-	player_entered = true
+	if body is playerClass:
+		player_entered = true
+	elif body is bullet:
+		print("hit")
+		demon_boss.take_damage()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://btthuubqumr3t"]
+[gd_scene load_steps=52 format=4 uid="uid://btthuubqumr3t"]
 
 [ext_resource type="Texture2D" uid="uid://cfhew5wvjj2ox" path="res://assets/warped city files/demo/assets/environment/bg-1.png" id="1_b7qex"]
 [ext_resource type="Script" path="res://scripts/level_scripts/AutoScroll(SKY).gd" id="1_jkeb3"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://eeqiv6luaijk" path="res://assets/warped city files/ENVIRONMENT/props/banner-scroll/banner-scroll-2.png" id="23_8raq5"]
 [ext_resource type="Texture2D" uid="uid://btfcrd4fm4kqb" path="res://assets/warped city files/ENVIRONMENT/props/banner-scroll/banner-scroll-3.png" id="24_14l0f"]
 [ext_resource type="PackedScene" uid="uid://gh71mtemy1po" path="res://scenes/killzone.tscn" id="28_bxag1"]
+[ext_resource type="PackedScene" uid="uid://ylj4rl6ynmq5" path="res://scenes/demon_boss.tscn" id="29_x2hdw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kh3cb"]
 texture = ExtResource("16_legnu")
@@ -391,7 +392,7 @@ position = Vector2(912, 209)
 texture = ExtResource("16_legnu")
 
 [node name="Enemy" parent="." instance=ExtResource("17_g2a8y")]
-position = Vector2(870, 133)
+position = Vector2(470, 105)
 
 [node name="Player" parent="." instance=ExtResource("18_h63c0")]
 position = Vector2(57, 620)
@@ -407,3 +408,6 @@ limit_bottom = 720
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(62, 777)
 shape = SubResource("WorldBoundaryShape2D_uwlah")
+
+[node name="DemonBoss" parent="." instance=ExtResource("29_x2hdw")]
+position = Vector2(308, 549)

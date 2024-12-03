@@ -159,8 +159,7 @@ height = 80.0
 radius = 100.0
 
 [node name="DemonBoss" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 3
 script = ExtResource("1_w728i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -193,6 +192,7 @@ grow_vertical = 0
 value = 100.0
 
 [node name="Label" type="Label" parent="UI/ProgressBar"]
+visible = false
 layout_mode = 0
 offset_left = 4.0
 offset_top = -21.0
@@ -201,6 +201,7 @@ offset_bottom = 2.0
 text = "Demon"
 
 [node name="Label" type="Label" parent="UI"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -215,6 +216,7 @@ grow_vertical = 2
 text = "Boss Slain"
 
 [node name="Debug" type="Label" parent="."]
+visible = false
 offset_left = -21.0
 offset_top = -76.0
 offset_right = 19.0
@@ -229,7 +231,6 @@ vertical_alignment = 1
 shape = SubResource("CapsuleShape2D_gpmj2")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_myrcd")
@@ -252,4 +253,5 @@ script = ExtResource("3_qwg63")
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("3_qwg63")
 
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_bullet_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]

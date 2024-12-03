@@ -1,3 +1,4 @@
+class_name bullet
 extends CharacterBody2D
 var dir: int
 var rot: float
@@ -17,3 +18,6 @@ func _physics_process(delta):
 
 func _on_collosion_dec_body_entered(body):
 	queue_free()
+	
+func _to_string():
+	return "bullet"
