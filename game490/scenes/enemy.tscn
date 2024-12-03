@@ -116,6 +116,10 @@ sprite_frames = SubResource("SpriteFrames_4kno5")
 animation = &"idle"
 frame_progress = 0.155408
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(41.3333, -4.26326e-14)
+scale = Vector2(1, 0.715302)
+
 [connection signal="area_entered" from="detectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]
