@@ -253,5 +253,9 @@ script = ExtResource("3_qwg63")
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("3_qwg63")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_bullet_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

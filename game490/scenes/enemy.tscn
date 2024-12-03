@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://blh1j7111aum6" path="res://assets/sprites/MaleChar/Idle.png" id="2_py3n4"]
 [ext_resource type="Texture2D" uid="uid://dfjlydcnq2pkn" path="res://assets/sprites/MaleChar/Run.png" id="3_yvc1c"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_78g5v"]
+radius = 7.47507
+height = 39.3358
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_mjsrt"]
 radius = 24.0433
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_pa0i6"]
-radius = 13.4864
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0r8cn"]
 atlas = ExtResource("2_py3n4")
@@ -97,16 +98,16 @@ animations = [{
 scale = Vector2(1.5, 1.405)
 script = ExtResource("1_j6wgr")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.87289, 1.33896)
+shape = SubResource("CapsuleShape2D_78g5v")
+
 [node name="detectionArea" type="Area2D" parent="."]
 scale = Vector2(1.5, 1.405)
 
 [node name="detectionRadius" type="CollisionShape2D" parent="detectionArea"]
 scale = Vector2(1.5, 1.405)
 shape = SubResource("CircleShape2D_mjsrt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.5, 1.405)
-shape = SubResource("CircleShape2D_pa0i6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.5, -2.75)
