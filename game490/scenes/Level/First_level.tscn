@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=4 uid="uid://btthuubqumr3t"]
+[gd_scene load_steps=53 format=4 uid="uid://btthuubqumr3t"]
 
 [ext_resource type="Texture2D" uid="uid://cfhew5wvjj2ox" path="res://assets/warped city files/demo/assets/environment/bg-1.png" id="1_b7qex"]
 [ext_resource type="Script" path="res://scripts/level_scripts/AutoScroll(SKY).gd" id="1_jkeb3"]
+[ext_resource type="Script" path="res://scripts/level_scripts/first_level.gd" id="1_x04uu"]
 [ext_resource type="Texture2D" uid="uid://cjhak5y2bn0gy" path="res://assets/warped city files/demo/assets/environment/bg-2.png" id="2_r4wwy"]
 [ext_resource type="Script" path="res://scripts/level_scripts/AutoScoll(building1).gd" id="3_ah7di"]
 [ext_resource type="Texture2D" uid="uid://bb327ls8bxlj3" path="res://assets/warped city files/demo/assets/environment/bg-3.png" id="3_c6s2f"]
@@ -405,6 +406,7 @@ distance = 58.0
 
 [node name="FirstLevel" type="Node2D"]
 z_as_relative = false
+script = ExtResource("1_x04uu")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_offset = Vector2(10, 10)
